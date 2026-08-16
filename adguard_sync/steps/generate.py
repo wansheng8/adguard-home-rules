@@ -66,10 +66,12 @@ def generate_adblock(records: list[dict[str, Any]], homepage: str) -> str:
 
 
 def generate_blacklist(records: list[dict[str, Any]], homepage: str) -> str:
-    """合并黑名单（纯域名，每行一个，同时兼容 hosts/adblock 订阅）。"""
-    lines = [_header("blacklist", "全部黑名单（纯域名）", homepage)]
+    """合并黑名单（AdGuard 标准语法 ||domain^）。"""
+    lines = [_header("blacklist", "全部黑名单（AdGuard 语法）", homepage)]
     lines.extend(
-        r["domain"] for r in records if r["domain"] and not r.get("keep_raw", False)
+        "||" + r["domain"] + "^"
+        for r in records
+        if r["domain"] and not r.get("keep_raw", False)
     )
     return "\n".join(lines) + "\n"
 
