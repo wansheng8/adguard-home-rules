@@ -370,80 +370,6 @@ blacklist:
     timeout: 15
     note: "malware-filter URLhaus（AdGuard Home 版）"
 
-  # ---------- 待补充 URL（确认后启用） ----------
-  - url: ""
-    type: blacklist
-    category: advertising
-    enabled: false
-    timeout: 15
-    note: "秋风广告规则（待确认订阅 URL）"
-  - url: ""
-    type: blacklist
-    category: advertising
-    enabled: false
-    timeout: 15
-    note: "那个谁520广告规则（待确认订阅 URL）"
-  - url: ""
-    type: blacklist
-    category: advertising
-    enabled: false
-    timeout: 15
-    note: "Anti-AD 通用规则（与上方 Anti-AD 是否同源待确认）"
-  - url: ""
-    type: blacklist
-    category: advertising
-    enabled: false
-    timeout: 15
-    note: "SMAdHosts 规则（待确认订阅 URL）"
-  - url: ""
-    type: blacklist
-    category: advertising
-    enabled: false
-    timeout: 15
-    note: "茯苓拦截规则（待确认订阅 URL）"
-  - url: ""
-    type: blacklist
-    category: advertising
-    enabled: false
-    timeout: 15
-    note: "X浏览器移动端规则（待确认订阅 URL）"
-  - url: ""
-    type: blacklist
-    category: other
-    enabled: false
-    timeout: 15
-    note: "Game Console 广告拦截（HaGeZi 已停更，待确认替代源）"
-  - url: ""
-    type: blacklist
-    category: other
-    enabled: false
-    timeout: 15
-    note: "Smart-TV 拦截（待确认订阅 URL）"
-  - url: ""
-    type: blacklist
-    category: advertising
-    enabled: false
-    timeout: 15
-    note: "EasyList Hebrew 以色列（待确认订阅 URL）"
-  - url: ""
-    type: blacklist
-    category: advertising
-    enabled: false
-    timeout: 15
-    note: "ABPVN 越南（待确认订阅 URL）"
-  - url: ""
-    type: blacklist
-    category: advertising
-    enabled: false
-    timeout: 15
-    note: "AdBlocker（待确认具体订阅 URL）"
-  - url: ""
-    type: blacklist
-    category: other
-    enabled: false
-    timeout: 15
-    note: "HaGeZi 推荐白名单（referral whitelist，待确认 URL）"
-
 whitelist:
   - url: "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/exceptions.txt"
     type: whitelist
@@ -463,9 +389,3 @@ whitelist:
     enabled: true
     timeout: 15
     note: "uBlock filters - Unbreak（修复网站误拦截）"
-  - url: ""
-    type: whitelist
-    category: other
-    enabled: false
-    timeout: 15
-    note: "HaGeZi 推荐白名单（白名单源，待确认 URL）"

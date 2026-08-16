@@ -39,6 +39,6 @@
 
 - 时区：北京时间 (Asia/Shanghai)
 - 更新频率：每 8 小时自动同步一次（GitHub Actions 定时任务）
-- 最近更新时间：2026-08-16 11:35:18
+- 最近更新时间：2026-08-16 11:44:59
 
 [GitHub 仓库](https://github.com/wansheng8/adguard-home-rules)
