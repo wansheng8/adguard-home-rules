@@ -18,19 +18,19 @@
 | raw.githubusercontent.com | `https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/adblock.txt` |
 | cdn.jsdelivr.net | `https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/adblock.txt` |
 
-### `blacklist.txt`
+### `黑名单.txt`
 
 | CDN | 订阅链接 |
 | --- | --- |
-| raw.githubusercontent.com | `https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/blacklist.txt` |
-| cdn.jsdelivr.net | `https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/blacklist.txt` |
+| raw.githubusercontent.com | `https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/黑名单.txt` |
+| cdn.jsdelivr.net | `https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/黑名单.txt` |
 
-### `whitelist.txt`
+### `白名单.txt`
 
 | CDN | 订阅链接 |
 | --- | --- |
-| raw.githubusercontent.com | `https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/whitelist.txt` |
-| cdn.jsdelivr.net | `https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/whitelist.txt` |
+| raw.githubusercontent.com | `https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/白名单.txt` |
+| cdn.jsdelivr.net | `https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/白名单.txt` |
 
 ## 使用方式（AdGuard Home）
 
@@ -60,6 +60,6 @@
 
 - 时区：北京时间 (Asia/Shanghai)
 - 更新频率：每 8 小时自动同步一次（GitHub Actions 定时任务）
-- 最近更新时间：2026-08-16 11:01:52
+- 最近更新时间：2026-08-16 11:03:30
 
 [GitHub 仓库](https://github.com/wansheng8/adguard-home-rules)

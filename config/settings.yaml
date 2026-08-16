@@ -7,13 +7,13 @@ timezone: "Asia/Shanghai"
 output:
   dir: "data/output"
   files:
-    - name: "hosts.txt"            # hosts 格式（纯域名，每行一个）
+    - name: "hosts.txt"            # hosts 格式（传统 hosts 风格）
       format: "hosts"
     - name: "adblock.txt"          # AdGuard/adblock 语法
       format: "adblock"
-    - name: "blacklist.txt"        # 全部黑名单（hosts + adblock 合并）
+    - name: "黑名单.txt"           # 黑名单（AdGuard 标准语法）
       format: "blacklist"
-    - name: "whitelist.txt"        # 白名单
+    - name: "白名单.txt"           # 白名单
       format: "whitelist"
 
 # 生成的仓库内引用文件名（AdGuard Home 订阅链接用）
