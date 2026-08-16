@@ -8,8 +8,11 @@
 #   enabled    : true | false，是否启用该源
 #   timeout    : 请求超时秒数（可选，默认 15）
 #   note       : 源说明（可选）
+#
+# 说明：下方 enabled: false 的条目为“待补充订阅 URL”占位，URL 确认后改为 true 即可启用。
 
 blacklist:
+  # ---------- 官方源 ----------
   - url: "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt"
     type: blacklist
     category: advertising
@@ -34,6 +37,32 @@ blacklist:
     enabled: true
     timeout: 15
     note: "EasyPrivacy（隐私追踪）"
+  - url: "https://easylist-downloads.adblockplus.org/fanboy-annoyance.txt"
+    type: blacklist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "Fanboy's Annoyance（讨厌元素/自我推销）"
+  - url: "https://filters.adtidy.org/extension/ublock/filters/3.txt"
+    type: blacklist
+    category: tracking
+    enabled: true
+    timeout: 15
+    note: "AdGuard Tracking Protection（跟踪保护）"
+  - url: "https://filters.adtidy.org/extension/ublock/filters/14.txt"
+    type: blacklist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "AdGuard Annoyances（烦人元素）"
+  - url: "https://filters.adtidy.org/extension/ublock/filters/4.txt"
+    type: blacklist
+    category: social
+    enabled: true
+    timeout: 15
+    note: "AdGuard Social Media（社交小部件）"
+
+  # ---------- 社区源 ----------
   - url: "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext"
     type: blacklist
     category: advertising
@@ -57,19 +86,363 @@ blacklist:
     category: advertising
     enabled: true
     timeout: 15
-    note: "uBlock filters"
+    note: "uBlock filters - Ads（主过滤）"
   - url: "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt"
     type: blacklist
     category: tracking
     enabled: true
     timeout: 15
-    note: "uBlock privacy"
+    note: "uBlock filters - Privacy（隐私）"
+  - url: "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt"
+    type: blacklist
+    category: malware
+    enabled: true
+    timeout: 15
+    note: "uBlock filters - Badware（恶意软件）"
+  - url: "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/quick-fixes.txt"
+    type: blacklist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "uBlock filters - Quick fixes（快速修复）"
   - url: "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt"
     type: blacklist
     category: malware
     enabled: true
     timeout: 15
     note: "NoCoin（挖矿脚本）"
+  - url: "https://urlhaus.abuse.ch/downloads/hostfile/"
+    type: blacklist
+    category: malware
+    enabled: true
+    timeout: 15
+    note: "URLhaus（恶意软件分发）"
+  - url: "https://anti-ad.net/easylist.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "Anti-AD（中文广告过滤，easylist 版）"
+  - url: "https://anti-ad.net/adguard.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "Anti-AD for AdGuard（adguard 版）"
+  - url: "https://cats-team.coding.net/p/adguard/d/AdRules/git/raw/main/adblock.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "Cats-Team AdRules AdBlock"
+  - url: "https://x.awsl.app/w.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "猫团队1 基础规则（XXKiller Cloudflare 镜像）"
+  - url: "https://x.awsl.app/f.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "猫团队1 增强规则（XXKiller Cloudflare 镜像）"
+  - url: "https://raw.githubusercontent.com/damengzhu/banad/main/jiekouAD.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "大萌主-接口广告规则"
+  - url: "https://raw.githubusercontent.com/damengzhu/abpmerge/main/abpmerge.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "大萌主 ABP Merge Rules（合并规则）"
+  - url: "https://raw.githubusercontent.com/afwfv/DD-AD/main/rule/DD-AD.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "DD-AD 去广告规则"
+  - url: "https://raw.githubusercontent.com/2771936993/HG/main/hg.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "海哥广告规则"
+  - url: "https://raw.githubusercontent.com/lingeringsound/10007_auto/master/adb.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "10007 自动规则（adblock 版）"
+  - url: "https://raw.githubusercontent.com/lingeringsound/10007_auto/master/all"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "10007 Host 完整版"
+  - url: "https://raw.githubusercontent.com/uniartisan/adblock_list/master/adblock.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "uniartisan 基础规则"
+  - url: "https://raw.githubusercontent.com/uniartisan/adblock_list/master/adblock_plus.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "uniartisan 增强规则"
+  - url: "https://raw.githubusercontent.com/PhoenixLjw/AdRules/main/adguard.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "AdKiller 合并规则（乘风视频/ADgk/anti-AD 等）"
+  - url: "https://raw.githubusercontent.com/banbendalao/ADgk/master/ADgk.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "ADgk 手机端广告规则"
+  - url: "https://raw.githubusercontent.com/qq5460168/me/master/rules.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "合并酷安大佬的规则"
+  - url: "https://raw.githubusercontent.com/neodevpro/neodevhost/master/adblocker"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "neodevhost 去广告（adblocker 版）"
+  - url: "https://raw.githubusercontent.com/samyansan/AdRules-SamYan/main/ad.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "AdGuard Rules 适用规则（SamYan）"
+  - url: "http://cfmqy.cn/adguard/api.php?type=host"
+    type: blacklist
+    category: advertising
+    enabled: false
+    timeout: 15
+    note: "晴雅去广告规则（host 版，域名 cfmqy.cn 暂时无法解析，禁用）"
+  - url: "https://raw.githubusercontent.com/badmojr/1Hosts/master/Lite/adblock.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "1Hosts Lite（精简版）"
+  - url: "https://raw.githubusercontent.com/badmojr/1Hosts/master/Xtra/adblock.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "1Hosts Xtra（极致版）"
+  - url: "https://small.oisd.nl/"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "OISD Small"
+  - url: "https://big.oisd.nl/"
+    type: blacklist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "OISD Big"
+  - url: "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/multi.txt"
+    type: blacklist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "HaGeZi Multi NORMAL（全面防护）"
+  - url: "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.mini.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "HaGeZi Pro mini（扩展保护精简版）"
+  - url: "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "HaGeZi Pro DNS Blocklist"
+  - url: "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.plus.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "HaGeZi Pro++ DNS Blocklist（最大保护）"
+  - url: "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/ultimate.txt"
+    type: blacklist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "HaGeZi Ultimate DNS Blocklist（多目标）"
+  - url: "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/anti.piracy.txt"
+    type: blacklist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "HaGeZi Anti Piracy（反盗版）"
+  - url: "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/gambling.txt"
+    type: blacklist
+    category: adult
+    enabled: true
+    timeout: 15
+    note: "HaGeZi Gambling（赌博）"
+  - url: "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.samsung.txt"
+    type: blacklist
+    category: tracking
+    enabled: true
+    timeout: 15
+    note: "HaGeZi Native Tracker Samsung（三星跟踪）"
+  - url: "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.winoffice.txt"
+    type: blacklist
+    category: tracking
+    enabled: true
+    timeout: 15
+    note: "HaGeZi Native Tracker Windows/Office（微软跟踪）"
+  - url: "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.xiaomi.txt"
+    type: blacklist
+    category: tracking
+    enabled: true
+    timeout: 15
+    note: "HaGeZi Native Tracker Xiaomi（小米跟踪）"
+  - url: "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/light.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "HaGeZi Light（轻量版）"
+  - url: "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/fake.txt"
+    type: blacklist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "HaGeZi Fake（假新闻/虚假信息）"
+  - url: "https://raw.githubusercontent.com/nickspaargaren/no-google/master/google-domains"
+    type: blacklist
+    category: tracking
+    enabled: true
+    timeout: 15
+    note: "No Google（屏蔽 Google 全家桶）"
+  - url: "https://raw.githubusercontent.com/ABPindo/indonesianadblockrules/master/subscriptions/abpindo.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "ABPindo（印尼/马来补充）"
+  - url: "https://raw.githubusercontent.com/yous/YousList/master/youslist.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "YousList（韩文补充）"
+  - url: "https://raw.githubusercontent.com/lassekongo83/Frellwits-filter-lists/master/Frellwits-Swedish-Filter.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "Frellwit's 瑞典过滤"
+  - url: "https://filters.adtidy.org/extension/ublock/filters/13.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "AdGuard Turkish filter（土耳其）"
+  - url: "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/NorwegianExperimentalList%20alternate%20versions/NordicFiltersAdGuardHome.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "Dandelion Sprout 北欧过滤（AdGuard Home 版）"
+  - url: "https://malware-filter.gitlab.io/malware-filter/urlhaus-filter-agh.txt"
+    type: blacklist
+    category: malware
+    enabled: true
+    timeout: 15
+    note: "malware-filter URLhaus（AdGuard Home 版）"
+
+  # ---------- 待补充 URL（确认后启用） ----------
+  - url: ""
+    type: blacklist
+    category: advertising
+    enabled: false
+    timeout: 15
+    note: "秋风广告规则（待确认订阅 URL）"
+  - url: ""
+    type: blacklist
+    category: advertising
+    enabled: false
+    timeout: 15
+    note: "那个谁520广告规则（待确认订阅 URL）"
+  - url: ""
+    type: blacklist
+    category: advertising
+    enabled: false
+    timeout: 15
+    note: "Anti-AD 通用规则（与上方 Anti-AD 是否同源待确认）"
+  - url: ""
+    type: blacklist
+    category: advertising
+    enabled: false
+    timeout: 15
+    note: "SMAdHosts 规则（待确认订阅 URL）"
+  - url: ""
+    type: blacklist
+    category: advertising
+    enabled: false
+    timeout: 15
+    note: "茯苓拦截规则（待确认订阅 URL）"
+  - url: ""
+    type: blacklist
+    category: advertising
+    enabled: false
+    timeout: 15
+    note: "X浏览器移动端规则（待确认订阅 URL）"
+  - url: ""
+    type: blacklist
+    category: other
+    enabled: false
+    timeout: 15
+    note: "Game Console 广告拦截（HaGeZi 已停更，待确认替代源）"
+  - url: ""
+    type: blacklist
+    category: other
+    enabled: false
+    timeout: 15
+    note: "Smart-TV 拦截（待确认订阅 URL）"
+  - url: ""
+    type: blacklist
+    category: advertising
+    enabled: false
+    timeout: 15
+    note: "EasyList Hebrew 以色列（待确认订阅 URL）"
+  - url: ""
+    type: blacklist
+    category: advertising
+    enabled: false
+    timeout: 15
+    note: "ABPVN 越南（待确认订阅 URL）"
+  - url: ""
+    type: blacklist
+    category: advertising
+    enabled: false
+    timeout: 15
+    note: "AdBlocker（待确认具体订阅 URL）"
+  - url: ""
+    type: blacklist
+    category: other
+    enabled: false
+    timeout: 15
+    note: "HaGeZi 推荐白名单（referral whitelist，待确认 URL）"
 
 whitelist:
   - url: "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/exceptions.txt"
@@ -90,3 +463,9 @@ whitelist:
     enabled: true
     timeout: 15
     note: "uBlock filters - Unbreak（修复网站误拦截）"
+  - url: ""
+    type: whitelist
+    category: other
+    enabled: false
+    timeout: 15
+    note: "HaGeZi 推荐白名单（白名单源，待确认 URL）"
