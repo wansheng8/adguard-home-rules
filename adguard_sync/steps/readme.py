@@ -51,24 +51,38 @@ def _stats_table(records: dict[str, list[dict[str, Any]]], category_order: list[
 
 
 def _subscription_section(manifest: dict[str, Any]) -> str:
-    """生成订阅源链接清单。"""
+    """生成订阅源链接清单。
+
+    风格：| 过滤器类型 | 完整版 | 精简版 |，链接指向各产物的 GitHub 直链。
+    单版本产物时完整版与精简版指向同一文件。
+    """
     links = manifest.get("links", [])
     if not links:
         return "> 尚未生成产物，请先运行流水线。"
 
-    grouped: dict[str, list[dict[str, Any]]] = {}
+    # 产物文件 -> 过滤器类型名称（用于展示）
+    file_type_map = {
+        "adblock.txt": "广告过滤器",
+        "黑名单.txt": "DNS过滤器",
+        "hosts.txt": "Host列表",
+        "白名单.txt": "白名单",
+    }
+
+    # 每个文件的 GitHub 直链（raw.githubusercontent.com）
+    file_url: dict[str, str] = {}
     for item in links:
-        grouped.setdefault(item["file"], []).append(item)
+        if item["cdn"] == "raw.githubusercontent.com":
+            file_url.setdefault(item["file"], item["url"])
 
     lines = []
-    for file_name, variants in grouped.items():
-        lines.append(f"### `{file_name}`")
-        lines.append("")
-        lines.append("| CDN | 订阅链接 |")
-        lines.append("| --- | --- |")
-        for v in variants:
-            lines.append(f"| {v['cdn']} | `{v['url']}` |")
-        lines.append("")
+    lines.append("| 过滤器类型 | 完整版 | 精简版 |")
+    lines.append("| --- | --- | --- |")
+    for file_name, type_name in file_type_map.items():
+        url = file_url.get(file_name)
+        if not url:
+            continue
+        cell = f"[Github]({url})"
+        lines.append(f"| {type_name} | {cell} | {cell} |")
     return "\n".join(lines)
 
 
@@ -93,14 +107,15 @@ def build_readme(
     lines.append("## 订阅链接")
     lines.append("")
     lines.append(_subscription_section(manifest))
+    lines.append("")
     lines.append("## 使用方式（AdGuard Home）")
     lines.append("")
-    lines.append("在 AdGuard Home 的「过滤器 → DNS 拦截清单」中添加上述链接即可订阅：")
+    lines.append("在 AdGuard Home 的「过滤器 → DNS 拦截清单」中添加上表中的链接即可订阅：")
     lines.append("")
     lines.append("1. 打开 AdGuard Home 管理面板")
     lines.append("2. 进入 **过滤器** → **DNS 拦截清单** → **添加过滤器**")
-    lines.append("3. 粘贴上表中的任一订阅链接（推荐 `hosts.txt` 或 `adblock.txt`）")
-    lines.append("4. 若需放行误拦域名，同时订阅 `whitelist.txt`")
+    lines.append("3. 粘贴上表中的订阅链接（推荐 **广告过滤器** 或 **DNS过滤器**）")
+    lines.append("4. 若需放行误拦域名，同时订阅 **白名单**")
     lines.append("")
     lines.append("> 提示：国内环境可优先选用 `cdn.jsdelivr.net` 加速链接。")
     lines.append("")
