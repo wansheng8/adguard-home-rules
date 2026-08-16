@@ -77,9 +77,13 @@ def generate_blacklist(records: list[dict[str, Any]], homepage: str) -> str:
 
 
 def generate_whitelist(records: list[dict[str, Any]], homepage: str) -> str:
-    """白名单：AdGuard 例外语法 @@||domain^。"""
+    """白名单：AdGuard 例外语法 @@||domain^；keep_raw 规则原样保留。"""
     lines = [_header("whitelist", "白名单（放行）", homepage)]
-    lines.extend("@@||" + r["domain"] + "^" for r in records)
+    for r in records:
+        if r.get("keep_raw", False):
+            lines.append(r["raw"])
+        else:
+            lines.append("@@||" + r["domain"] + "^")
     return "\n".join(lines) + "\n"
 
 

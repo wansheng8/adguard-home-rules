@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import re
 
-COMMENT_PREFIXES = ("#", "!", "[", "/", "*")
+COMMENT_PREFIXES = ("#", "!", "[", "*")
 
 
 def clean_lines(lines: list[str]) -> list[str]:
@@ -12,6 +12,8 @@ def clean_lines(lines: list[str]) -> list[str]:
     - 去除首尾空白
     - 去除纯注释行与空行
     - 去除内联注释（以 # 或 ! 开头视为整行注释；行内 # 注释暂保留给语法层处理）
+
+    注意：`/` 开头的行是正则表达式规则（如 /^ads\d*\./），不是注释，保留给语法层处理。
     """
     cleaned: list[str] = []
     for line in lines:

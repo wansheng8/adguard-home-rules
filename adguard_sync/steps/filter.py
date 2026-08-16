@@ -164,8 +164,11 @@ class RuleClassifier:
             if name != "regex_rule" and self._has_path(line):
                 return None
 
-            # 通配符规则原样保留
-            if "*" in line:
+            # 通配符/带受支持修饰符的规则原样保留（正则规则已在 keep_raw spec 中处理）
+            if "*" in line or (
+                "$" in line
+                and name not in ("hosts_rule", "hosts_reversed", "regex_rule")
+            ):
                 record["keep_raw"] = True
 
             # 带修饰符的规则：检查修饰符是否受支持（正则规则除外，其 $ 是锚点）

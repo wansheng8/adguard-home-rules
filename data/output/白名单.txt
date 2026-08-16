@@ -1,14 +1,14 @@
 !
 ! Title: AdGuard Home 规则聚合订阅
 ! Description: 白名单（放行）
-! Generated: 2026-08-16 11:54:29 (Asia/Shanghai)
+! Generated: 2026-08-16 12:06:37 (Asia/Shanghai)
 ! Homepage: https://github.com/wansheng8/adguard-home-rules
 ! Licence: MIT
 ! ------------
 ! Section: whitelist
 
 @@||content.ingbank.pl^
-@@||ay.delivery^
+@@||*.ay.delivery
 @@||commission-junction.com^
 @@||crwdcntrl.net^
 @@||id5-sync.com^
