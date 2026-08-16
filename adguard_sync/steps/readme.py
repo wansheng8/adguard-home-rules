@@ -53,8 +53,9 @@ def _stats_table(records: dict[str, list[dict[str, Any]]], category_order: list[
 def _subscription_section(manifest: dict[str, Any]) -> str:
     """生成订阅源链接清单。
 
-    风格：| 过滤器类型 | 完整版 | 精简版 |，链接指向各产物的 GitHub 直链。
-    单版本产物时完整版与精简版指向同一文件。
+    风格：| 过滤器类型 | 完整版 | 精简版 |
+    完整版 = GitHub 源链接（raw.githubusercontent.com）
+    精简版 = CDN 加速链接（cdn.jsdelivr.net）
     """
     links = manifest.get("links", [])
     if not links:
@@ -68,21 +69,23 @@ def _subscription_section(manifest: dict[str, Any]) -> str:
         "白名单.txt": "白名单",
     }
 
-    # 每个文件的 GitHub 直链（raw.githubusercontent.com）
-    file_url: dict[str, str] = {}
+    # 每个文件的两类链接
+    file_urls: dict[str, dict[str, str]] = {}
     for item in links:
-        if item["cdn"] == "raw.githubusercontent.com":
-            file_url.setdefault(item["file"], item["url"])
+        file_urls.setdefault(item["file"], {})[item["cdn"]] = item["url"]
 
     lines = []
     lines.append("| 过滤器类型 | 完整版 | 精简版 |")
     lines.append("| --- | --- | --- |")
     for file_name, type_name in file_type_map.items():
-        url = file_url.get(file_name)
-        if not url:
+        urls = file_urls.get(file_name, {})
+        github = urls.get("raw.githubusercontent.com")
+        cdn = urls.get("cdn.jsdelivr.net")
+        if not github or not cdn:
             continue
-        cell = f"[Github]({url})"
-        lines.append(f"| {type_name} | {cell} | {cell} |")
+        full = f"[Github]({github})"
+        lite = f"[CDN]({cdn})"
+        lines.append(f"| {type_name} | {full} | {lite} |")
     return "\n".join(lines)
 
 

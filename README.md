@@ -6,10 +6,10 @@
 
 | 过滤器类型 | 完整版 | 精简版 |
 | --- | --- | --- |
-| 广告过滤器 | [Github](https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/adblock.txt) | [Github](https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/adblock.txt) |
-| DNS过滤器 | [Github](https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/黑名单.txt) | [Github](https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/黑名单.txt) |
-| Host列表 | [Github](https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/hosts.txt) | [Github](https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/hosts.txt) |
-| 白名单 | [Github](https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/白名单.txt) | [Github](https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/白名单.txt) |
+| 广告过滤器 | [Github](https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/adblock.txt) | [CDN](https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/adblock.txt) |
+| DNS过滤器 | [Github](https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/黑名单.txt) | [CDN](https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/黑名单.txt) |
+| Host列表 | [Github](https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/hosts.txt) | [CDN](https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/hosts.txt) |
+| 白名单 | [Github](https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/白名单.txt) | [CDN](https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/白名单.txt) |
 
 ## 使用方式（AdGuard Home）
 
@@ -39,6 +39,6 @@
 
 - 时区：北京时间 (Asia/Shanghai)
 - 更新频率：每 8 小时自动同步一次（GitHub Actions 定时任务）
-- 最近更新时间：2026-08-16 11:08:04
+- 最近更新时间：2026-08-16 11:09:54
 
 [GitHub 仓库](https://github.com/wansheng8/adguard-home-rules)
