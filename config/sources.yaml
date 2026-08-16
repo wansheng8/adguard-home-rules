@@ -1,0 +1,92 @@
+# 采集源配置
+# 黑名单链接：将其中规则加入黑名单（默认拒绝）
+# 白名单链接：将其中规则加入白名单（放行，优先级高于黑名单）
+# 每个条目支持的字段：
+#   url        : 规则源链接（支持 http/https，以及 file:// 本地调试）
+#   type       : blacklist | whitelist
+#   category   : 规则分类标识（advertising / tracking / social / adult / phishing / malware / other）
+#   enabled    : true | false，是否启用该源
+#   timeout    : 请求超时秒数（可选，默认 15）
+#   note       : 源说明（可选）
+
+blacklist:
+  - url: "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "AdGuard DNS filter"
+  - url: "https://filters.adtidy.org/extension/ublock/filters/2.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "AdGuard Base filter（浏览器扩展）"
+  - url: "https://easylist-downloads.adblockplus.org/easylist.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "EasyList（广告过滤）"
+  - url: "https://easylist-downloads.adblockplus.org/easyprivacy.txt"
+    type: blacklist
+    category: tracking
+    enabled: true
+    timeout: 15
+    note: "EasyPrivacy（隐私追踪）"
+  - url: "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "Peter Lowe's 广告服务器列表"
+  - url: "https://adaway.org/hosts.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "AdAway hosts"
+  - url: "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+    type: blacklist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "StevenBlack Unified Hosts"
+  - url: "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "uBlock filters"
+  - url: "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt"
+    type: blacklist
+    category: tracking
+    enabled: true
+    timeout: 15
+    note: "uBlock privacy"
+  - url: "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt"
+    type: blacklist
+    category: malware
+    enabled: true
+    timeout: 15
+    note: "NoCoin（挖矿脚本）"
+
+whitelist:
+  - url: "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/exceptions.txt"
+    type: whitelist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "AdGuard DNS filter 白名单（放行必要域名）"
+  - url: "https://easylist-downloads.adblockplus.org/exceptionrules.txt"
+    type: whitelist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "EasyList 例外规则（允许规则）"
+  - url: "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt"
+    type: whitelist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "uBlock filters - Unbreak（修复网站误拦截）"

@@ -1,0 +1,66 @@
+{
+  "generated_at": "2026-08-16T10:55:13+08:00",
+  "repository": {
+    "owner": "wansheng8",
+    "repo": "adguard-home-rules",
+    "branch": "main"
+  },
+  "links": [
+    {
+      "file": "hosts.txt",
+      "lines": 267337,
+      "sha256": "16cada94d240c5eefdf52cb159cb4d2d01a0adf162148b4132a12e9696153069",
+      "cdn": "raw.githubusercontent.com",
+      "url": "https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/hosts.txt"
+    },
+    {
+      "file": "adblock.txt",
+      "lines": 267345,
+      "sha256": "16811ced0ba0ac1b143adf62983c37d0bb11b5955c73f0405363e3028b85975d",
+      "cdn": "raw.githubusercontent.com",
+      "url": "https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/adblock.txt"
+    },
+    {
+      "file": "blacklist.txt",
+      "lines": 267337,
+      "sha256": "b3f1d98fd611b6487745ade192b1244288cd847c3bf5543196e88c5d95a201cf",
+      "cdn": "raw.githubusercontent.com",
+      "url": "https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/blacklist.txt"
+    },
+    {
+      "file": "whitelist.txt",
+      "lines": 491,
+      "sha256": "d042e0c69cba05bcd10b8a8b996ac0bdec1bd85984d008541399d636886fb486",
+      "cdn": "raw.githubusercontent.com",
+      "url": "https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/whitelist.txt"
+    },
+    {
+      "file": "hosts.txt",
+      "lines": 267337,
+      "sha256": "16cada94d240c5eefdf52cb159cb4d2d01a0adf162148b4132a12e9696153069",
+      "cdn": "cdn.jsdelivr.net",
+      "url": "https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/hosts.txt"
+    },
+    {
+      "file": "adblock.txt",
+      "lines": 267345,
+      "sha256": "16811ced0ba0ac1b143adf62983c37d0bb11b5955c73f0405363e3028b85975d",
+      "cdn": "cdn.jsdelivr.net",
+      "url": "https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/adblock.txt"
+    },
+    {
+      "file": "blacklist.txt",
+      "lines": 267337,
+      "sha256": "b3f1d98fd611b6487745ade192b1244288cd847c3bf5543196e88c5d95a201cf",
+      "cdn": "cdn.jsdelivr.net",
+      "url": "https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/blacklist.txt"
+    },
+    {
+      "file": "whitelist.txt",
+      "lines": 491,
+      "sha256": "d042e0c69cba05bcd10b8a8b996ac0bdec1bd85984d008541399d636886fb486",
+      "cdn": "cdn.jsdelivr.net",
+      "url": "https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/whitelist.txt"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+# AdGuard Home 规则语法定义
+# 依据官方完整语法清单（见 .monkeycode-tmp-files/f97bc48f-语法-1.txt）整理。
+#
+# 支持并保留的语法：
+#   1. 域名拦截     ||domain^        （^ 可省略）     → 提取域名
+#   2. 地址开头     |https://domain^                  → 提取域名
+#   3. 通配符       ||*.domain^                       → 提取基础域名，原样保留
+#   4. 例外白名单   @@||domain^                       → 白名单
+#   5. Hosts 格式   IP domain  或  domain IP          → 提取域名
+#   6. 正则规则     /regex/                           → 原样保留
+#   7. 修饰符       $important / $denyallow / $dnstype /
+#                   $client / $ctag / $dnsrewrite     → 提取域名，原样保留
+#   8. 注释         ! ...   或    # ...
+#
+# 不支持的语法（忽略丢弃）：
+#   - 路径过滤       ||example.com/banner/*
+#   - 元素隐藏       ##.ad-banner  /  #@#.ad
+#   - 脚本注入       ##+js(...)     ##+style(...)    ##^script:has-text(...)
+#   - 资源类型修饰符 $script $image $third-party
+#   - 浏览器修饰符   $redirect $replace $csp $header
+
+output_format: "dual"
+
+# AdGuard Home 支持的修饰符关键字（规则中 $ 后出现其他关键字 → 视为不支持，忽略）
+supported_modifiers:
+  - important
+  - denyallow
+  - dnstype
+  - client
+  - ctag
+  - dnsrewrite
+
+# 不支持的语法特征（命中即忽略整条规则）
+unsupported_patterns:
+  - "##"
+  - "#@#"
+  - "##+"
+  - "$script"
+  - "$image"
+  - "$third-party"
+  - "$redirect"
+  - "$replace"
+  - "$csp"
+  - "$header"
+
+rule_types:
+  # 注释：Adblock 风格 ! 与 Hosts 风格 #
+  comment:
+    pattern: '^(#|!|\[)'
+    action: ignore
+    output: none
+  # 正则表达式规则 /.../
+  regex_rule:
+    pattern: '^/.+/$'
+    action: blacklist
+    output: adblock
+    keep_raw: true
+  # 例外规则（白名单）@@||domain^ / @@||domain
+  whitelist_rule:
+    pattern: '^@@\|\|'
+    action: whitelist
+    output: adblock
+  # 例外规则单竖线变体 @@|domain^|（AdGuard DNS filter 白名单大量使用）
+  whitelist_single_bar:
+    pattern: '^@@\|(?=[a-z0-9*])'
+    action: whitelist
+    output: adblock
+  # Hosts 文件格式：IP domain（0.0.0.0/127.0.0.1/::1/::）
+  hosts_rule:
+    pattern: '^((0\.0\.0\.0|127\.0\.0\.1|::1|::)[ \t]+[a-z0-9.\-]+)$'
+    action: blacklist
+    output: hosts
+  # Hosts 反写：domain IP
+  hosts_reversed:
+    pattern: '^([a-z0-9]([a-z0-9\-]{0,61}[a-z0-9])?\.)+[a-z]{2,}[ \t]+(0\.0\.0\.0|127\.0\.0\.1|::1|::)$'
+    action: blacklist
+    output: hosts
+  # 域名拦截 ||domain^ / ||domain
+  domain_rule:
+    pattern: '^\|\|'
+    action: blacklist
+    output: adblock
+  # 地址开头 |https://domain^
+  url_prefix_rule:
+    pattern: '^\|[a-z][a-z0-9+\-]*://'
+    action: blacklist
+    output: adblock
+  # 裸域名（部分列表直接给域名）
+  bare_domain:
+    pattern: '^([a-z0-9]([a-z0-9\-]{0,61}[a-z0-9])?\.)+[a-z]{2,}$'
+    action: blacklist
+    output: adblock
+
+# hosts 风格源转换：剥掉 IP 前缀，统一为纯域名
+host_conversion:
+  strip_prefix: true
+  prefix_pattern: '^(0\.0\.0\.0|127\.0\.0\.1|::1|::)[ \t]+'
+
+# 本机/保留地址域名，过滤掉
+reserved_hosts:
+  - "localhost"
+  - "localhost.localdomain"
+  - "broadcasthost"
+  - "local"
+  - "ip6-localhost"
+  - "ip6-loopback"
+  - "ip6-localnet"
+  - "ip6-mcastprefix"
+  - "ip6-allnodes"
+  - "ip6-allrouters"
+  - "ip6-allhosts"
+  - "0.0.0.0"
+  - "127.0.0.1"
+
+# 分类映射：按关键词把规则分入 category
+category_keywords:
+  advertising: ["ads", "advert", "adservice", "doubleclick", "adserver", "banner"]
+  tracking: ["track", "analytics", "stat", "pixel", "beacon", "telemetry"]
+  social: ["facebook", "twitter", "whatsapp", "instagram", "telegram", "tiktok"]
+  adult: ["porn", "sex", "xxx", "adult", "erotic"]
+  phishing: ["phish", "fraud", "scam"]
+  malware: ["malware", "trojan", "virus", "exploit", "botnet", "miner", "coin"]
+  other: []

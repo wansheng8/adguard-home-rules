@@ -1,0 +1,50 @@
+# 全局配置
+# 时间统一使用北京时间（Asia/Shanghai）
+
+timezone: "Asia/Shanghai"
+
+# 输出文件配置
+output:
+  dir: "data/output"
+  files:
+    - name: "hosts.txt"            # hosts 格式（纯域名，每行一个）
+      format: "hosts"
+    - name: "adblock.txt"          # AdGuard/adblock 语法
+      format: "adblock"
+    - name: "blacklist.txt"        # 全部黑名单（hosts + adblock 合并）
+      format: "blacklist"
+    - name: "whitelist.txt"        # 白名单
+      format: "whitelist"
+
+# 生成的仓库内引用文件名（AdGuard Home 订阅链接用）
+repository:
+  branch: "main"
+  # 成品文件相对仓库根路径
+  output_dir_in_repo: "data/output"
+  # 仓库名/用户名，由 README 生成器从 git remote 自动探测，也可手动覆盖
+  owner: ""
+  repo: ""
+
+# CDN 加速链接（两种前缀，自动生成）
+cdn:
+  - name: "raw.githubusercontent.com"
+    url_template: "https://raw.githubusercontent.com/{owner}/{repo}/{branch}/{path}"
+  - name: "cdn.jsdelivr.net"
+    url_template: "https://cdn.jsdelivr.net/gh/{owner}/{repo}@{branch}/{path}"
+
+# README 生成配置
+readme:
+  template: "README.template.md"
+  output: "README.md"
+  title: "AdGuard Home 规则聚合订阅"
+  description: "自动聚合多个开源黑白名单，经语法校验、分类、去重后生成 AdGuard Home 可订阅的规则文件，并每 8 小时按北京时间自动更新。"
+
+# 分类统计展示顺序
+category_order:
+  - advertising
+  - tracking
+  - social
+  - adult
+  - phishing
+  - malware
+  - other
