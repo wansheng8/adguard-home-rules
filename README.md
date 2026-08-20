@@ -26,19 +26,19 @@
 
 | 分类 | 黑名单 | 白名单 |
 | --- | ---: | ---: |
-| advertising | 198078 | 300 |
-| tracking | 36910 | 25 |
-| social | 799 | 2 |
+| advertising | 198179 | 300 |
+| tracking | 36916 | 25 |
+| social | 800 | 2 |
 | adult | 1545 | 0 |
-| phishing | 136 | 0 |
-| malware | 1590 | 0 |
-| other | 330924 | 263 |
-| **合计** | **569982** | **590** |
+| phishing | 138 | 0 |
+| malware | 1609 | 0 |
+| other | 331461 | 263 |
+| **合计** | **570648** | **590** |
 
 ## 更新信息
 
 - 时区：北京时间 (Asia/Shanghai)
 - 更新频率：每 8 小时自动同步一次（GitHub Actions 定时任务）
-- 最近更新时间：2026-08-20 08:38:23
+- 最近更新时间：2026-08-20 16:25:56
 
 [GitHub 仓库](https://github.com/wansheng8/adguard-home-rules)
