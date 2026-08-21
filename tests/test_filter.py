@@ -105,6 +105,23 @@ def test_regex_rule():
     assert rec["raw"].startswith("/")
 
 
+def test_ip_regex_ignored():
+    """纯 IP 匹配的正则在 DNS 层无法命中域名查询，应忽略。"""
+    c = setup_classifier()
+    assert c.classify("/^139\\.45\\.197\\.2(4[0-9]|5[0-4]):/") is None
+    assert c.classify("/^88\\.208\\.22\\.[1234]$/") is None
+    assert c.classify("/^23\\.109\\.73\\.\\d{3}/") is None
+
+
+def test_domain_regex_kept():
+    """匹配域名的正则规则仍应保留。"""
+    c = setup_classifier()
+    rec = c.classify("/^ads\\d*\\.example\\.com$/")
+    assert rec is not None
+    rec2 = c.classify("/^track[0-9]+\\.example\\.net$/")
+    assert rec2 is not None
+
+
 def test_comment_adblock_style():
     """! 注释。"""
     c = setup_classifier()

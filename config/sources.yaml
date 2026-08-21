@@ -122,6 +122,104 @@ blacklist:
     timeout: 15
     note: "NoCoin（挖矿脚本）"
 
+  # ---------- 补充增强（恢复高覆盖源） ----------
+  - url: "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt"
+    type: blacklist
+    category: malware
+    enabled: true
+    timeout: 15
+    note: "uBlock filters - Badware（恶意软件）"
+  - url: "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/quick-fixes.txt"
+    type: blacklist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "uBlock filters - Quick fixes（快速修复）"
+  - url: "https://filters.adtidy.org/extension/ublock/filters/3.txt"
+    type: blacklist
+    category: tracking
+    enabled: true
+    timeout: 15
+    note: "AdGuard Tracking Protection（跟踪保护）"
+  - url: "https://filters.adtidy.org/extension/ublock/filters/14.txt"
+    type: blacklist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "AdGuard Annoyances（烦人元素）"
+  - url: "https://filters.adtidy.org/extension/ublock/filters/4.txt"
+    type: blacklist
+    category: social
+    enabled: true
+    timeout: 15
+    note: "AdGuard Social Media（社交小部件）"
+  - url: "https://easylist-downloads.adblockplus.org/fanboy-annoyance.txt"
+    type: blacklist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "Fanboy's Annoyance（讨厌元素）"
+  - url: "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "Peter Lowe's 广告服务器列表"
+  - url: "https://raw.githubusercontent.com/Cats-Team/AdRules/main/adblock_plus.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "Cats-Team AdRules Plus（完整版）"
+  - url: "https://raw.githubusercontent.com/banbendalao/ADgk/master/ADgk.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "ADgk 手机端广告规则"
+  - url: "https://raw.githubusercontent.com/neodevpro/neodevhost/master/adblocker"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "neodevhost 去广告（adblocker 版）"
+  - url: "https://raw.githubusercontent.com/afwfv/DD-AD/main/rule/DD-AD.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "DD-AD 去广告规则"
+  - url: "https://raw.githubusercontent.com/2771936993/HG/main/hg.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "海哥广告规则"
+  - url: "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.plus.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "HaGeZi Pro++ DNS Blocklist（最大保护）"
+  - url: "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/ultimate.txt"
+    type: blacklist
+    category: other
+    enabled: true
+    timeout: 15
+    note: "HaGeZi Ultimate DNS Blocklist（多目标）"
+  - url: "https://raw.githubusercontent.com/damengzhu/abpmerge/main/abpmerge.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "大萌主 ABP Merge Rules（合并规则）"
+  - url: "https://raw.githubusercontent.com/badmojr/1Hosts/master/Lite/adblock.txt"
+    type: blacklist
+    category: advertising
+    enabled: true
+    timeout: 15
+    note: "1Hosts Lite（精简版）"
+
 whitelist:
   - url: "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/exceptions.txt"
     type: whitelist

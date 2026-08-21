@@ -109,6 +109,27 @@ class RuleClassifier:
         text = re.sub(r"^[a-z][a-z0-9+\-]*://", "", text, flags=re.IGNORECASE)
         return "/" in text.split("$", 1)[0]
 
+    @staticmethod
+    def _is_ip_regex(line: str) -> bool:
+        """判断正则规则是否只匹配 IP 地址（如 /^1.2.3.4$/ 或带端口）。
+
+        AdGuard Home 的正则规则匹配的是查询的域名（hostname），
+        纯 IP 形式的正则在 DNS 层永远无法命中，应忽略。
+        """
+        body = line.strip("/")
+        if not body:
+            return False
+        # \d 只匹配数字（IP 特征），替换为占位符后继续判断
+        body = re.sub(r"\\d", "0", body)
+        stripped = re.sub(r"^\^", "", body)
+        stripped = re.sub(r"\$$", "", stripped)
+        # 匹配如 ^139\.45\.197\.2(4[0-9]|5[0-4]):? / ^23\.109\.170\.\d{3} 等
+        if re.fullmatch(
+            r"[0-9.,\\|(){}\[\]:^$?+*\-\s]+", stripped
+        ) and not re.search(r"[a-z]", stripped, re.IGNORECASE):
+            return True
+        return False
+
     def _unsupported_modifier(self, line: str) -> bool:
         """判断修饰符部分是否包含不支持的浏览器专用修饰符。"""
         if "$" not in line:
@@ -162,6 +183,10 @@ class RuleClassifier:
 
             # 路径过滤 → 忽略（DNS 层看不到 URL 路径）；正则规则除外
             if name != "regex_rule" and self._has_path(line):
+                return None
+
+            # IP 正则（只匹配 IP 地址，不匹配域名）→ DNS 层永远无法命中，忽略
+            if name == "regex_rule" and self._is_ip_regex(line):
                 return None
 
             # 通配符/带受支持修饰符的规则原样保留（正则规则已在 keep_raw spec 中处理）
