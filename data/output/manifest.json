@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T15:57:24+08:00",
+  "generated_at": "2026-08-21T16:20:05+08:00",
   "repository": {
     "owner": "wansheng8",
     "repo": "adguard-home-rules",
@@ -9,56 +9,56 @@
     {
       "file": "hosts.txt",
       "lines": 678220,
-      "sha256": "56ee5ff66d0922070e6fe7deccad405611235bc3571f41b470a296e20f30ab13",
+      "sha256": "a95ff7020d603a35f3f1849929815b1e45cf872903203fcf8a75801adad6571f",
       "cdn": "raw.githubusercontent.com",
       "url": "https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/hosts.txt"
     },
     {
       "file": "adblock.txt",
       "lines": 678299,
-      "sha256": "8733295418d7b82e40f9147430f17e18f95abd890904a1f2217e129385e4b0b1",
+      "sha256": "cd57f1afadc3804290538a066dbf8aeacba4a30fc92c708604bb200d5a45f8f7",
       "cdn": "raw.githubusercontent.com",
       "url": "https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/adblock.txt"
     },
     {
       "file": "黑名单.txt",
       "lines": 678220,
-      "sha256": "3ba97b062ac9c94e04daeab97c424c3d714f5b859e1abeb916f15ff4e66aed67",
+      "sha256": "b025191f81d18f1e6f7c6a3b6eec6e9bc97f2bebfaf7f8b9e78a7d4b4382a5a9",
       "cdn": "raw.githubusercontent.com",
       "url": "https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/黑名单.txt"
     },
     {
       "file": "白名单.txt",
-      "lines": 813,
-      "sha256": "6f5d667575d52363edc3d4bcdcb34fd94551827f156ade14d11211e0500302b2",
+      "lines": 771,
+      "sha256": "db2db460ba8906c1febd8220656a35ca85a09b40a13a0b4d680a64533b85446f",
       "cdn": "raw.githubusercontent.com",
       "url": "https://raw.githubusercontent.com/wansheng8/adguard-home-rules/main/data/output/白名单.txt"
     },
     {
       "file": "hosts.txt",
       "lines": 678220,
-      "sha256": "56ee5ff66d0922070e6fe7deccad405611235bc3571f41b470a296e20f30ab13",
+      "sha256": "a95ff7020d603a35f3f1849929815b1e45cf872903203fcf8a75801adad6571f",
       "cdn": "cdn.jsdelivr.net",
       "url": "https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/hosts.txt"
     },
     {
       "file": "adblock.txt",
       "lines": 678299,
-      "sha256": "8733295418d7b82e40f9147430f17e18f95abd890904a1f2217e129385e4b0b1",
+      "sha256": "cd57f1afadc3804290538a066dbf8aeacba4a30fc92c708604bb200d5a45f8f7",
       "cdn": "cdn.jsdelivr.net",
       "url": "https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/adblock.txt"
     },
     {
       "file": "黑名单.txt",
       "lines": 678220,
-      "sha256": "3ba97b062ac9c94e04daeab97c424c3d714f5b859e1abeb916f15ff4e66aed67",
+      "sha256": "b025191f81d18f1e6f7c6a3b6eec6e9bc97f2bebfaf7f8b9e78a7d4b4382a5a9",
       "cdn": "cdn.jsdelivr.net",
       "url": "https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/黑名单.txt"
     },
     {
       "file": "白名单.txt",
-      "lines": 813,
-      "sha256": "6f5d667575d52363edc3d4bcdcb34fd94551827f156ade14d11211e0500302b2",
+      "lines": 771,
+      "sha256": "db2db460ba8906c1febd8220656a35ca85a09b40a13a0b4d680a64533b85446f",
       "cdn": "cdn.jsdelivr.net",
       "url": "https://cdn.jsdelivr.net/gh/wansheng8/adguard-home-rules@main/data/output/白名单.txt"
     }

@@ -1,28 +1,16 @@
 !
 ! Title: AdGuard Home 规则聚合订阅
 ! Description: 白名单（放行）
-! Generated: 2026-08-21 15:57:19 (Asia/Shanghai)
+! Generated: 2026-08-21 16:20:01 (Asia/Shanghai)
 ! Homepage: https://github.com/wansheng8/adguard-home-rules
 ! Licence: MIT
 ! ------------
 ! Section: whitelist
 
 @@||content.ingbank.pl^
-@@||*.ay.delivery
-@@||commission-junction.com^
-@@||crwdcntrl.net^
-@@||id5-sync.com^
-@@||liadm.com^
-@@||mczbf.com^
-@@||pgpartner.com^
-@@||rlcdn.com^
-@@||adsterra.com^
 @@||proto2ad.durasite.net^
 @@||ib.snssdk.com^
 @@||polaris.zijieapi.com^
-@@||ezodn.com^
-@@||awin1.com^
-@@||logentries.com^
 @@||omsc.kpn.com^
 @@||data.digital.costco.ca^
 @@||data.digital.costco.com^
@@ -47,9 +35,7 @@
 @@||vcs.zijieapi.com^
 @@||umengjmacs.m.taobao.com^
 @@||app.adjust.com^
-@@||afi-b.com^
 @@||hb.afl.rakuten.co.jp^
-@@||www.statcounter.com^
 @@||www.datadoghq-browser-agent.com^
 @@||ad.10010.com^
 @@||ad.abchina.com^
@@ -64,7 +50,6 @@
 @@||img.ads.tvb.com^
 @@||cmp.osano.com^
 @@||partner.o2online.de^
-@@||cdn.taboola.com^
 @@||unsubscribe.lhinsights.com^
 @@||ssai.aniview.com^
 @@||link.meet5.net^
@@ -80,7 +65,6 @@
 @@||trk.ecomm.lenovo.com^
 @@||s.bluecore.com^
 @@||affiliate.notion.so^
-@@||www3.doubleclick.net^
 @@||acs-m.daraz.pk^
 @@||taiga.maven.io^
 @@||tlh.gedidigital.it^
@@ -150,14 +134,6 @@
 @@||validate.perfdrive.com^
 @@||ia.hit.interia.pl^
 @@||analytics.amplitude.com^
-@@||ads.adsterra.com^
-@@||publishers.adsterra.com^
-@@||beta.publishers.adsterra.com^
-@@||partners.adsterra.com^
-@@||beta.partners.adsterra.com^
-@@||affiliates.adsterra.com^
-@@||beta.affiliates.adsterra.com^
-@@||help-advertisers.adsterra.com^
 @@||goto.target.com^
 @@||goto.walmart.com^
 @@||citiintl.122.2o7.net^
@@ -183,10 +159,7 @@
 @@||links.getblueshift.com^
 @@||click.trafficguard.ai^
 @@||pt.afl.rakuten.co.jp^
-@@||tags.crwdcntrl.net^
 @@||official.paymaya.com^
-@@||statcounter.com^
-@@||gs.statcounter.com^
 @@||click.virt.exacttarget.com^
 @@||login.sendpulse.com^
 @@||a.sellpoint.net^
@@ -197,7 +170,6 @@
 @@||cs.silverpop.com^
 @@||grp07.ias.rakuten.co.jp^
 @@||cindyholbrook.lpages.co^
-@@||pagead.l.doubleclick.net^
 @@||www.googleadservices.com^
 @@||my.tealiumiq.com^
 @@||artifactory.appodeal.com^
@@ -208,7 +180,6 @@
 @@||forum.notebookreview.com^
 @@||radiofrance.targetspot.com^
 @@||feed.adrelayer.com^
-@@||redirect.appmetrica.yandex.com^
 @@||guce.advertising.com^
 @@||a.adwolf.ru^
 @@||cm-beacon.nakanohito.jp^
@@ -219,7 +190,6 @@
 @@||href.li^
 @@||str.hit.gemius.pl^
 @@||track.rutarget.ru^
-@@||5471782.fls.doubleclick.net^
 @@||injections.adguard.org^
 @@||cdn.datatables.net^
 @@||local.adguard.org^
@@ -236,7 +206,6 @@
 @@||krebsonsecurity.com^
 @@||login.gaijin.net^
 @@||imasdk.googleapis.com^
-@@||videoplayerhub.com^
 @@||data.service.paypal.com^
 @@||ssl.o.auspost.com.au^
 @@||dig.lianjia.com^
@@ -249,7 +218,6 @@
 @@||html-load.com^
 @@||dsp.adkernel.com^
 @@||bjfesdk.douyucdn.cn^
-@@||data.flurry.com^
 @@||sdk.open.talk.gepush.com^
 @@||ads.google.com^
 @@||cdn.intergi.com^
@@ -274,10 +242,8 @@
 @@||tbs.tradedoubler.com^
 @@||wrap.tradedoubler.com^
 @@||api.bizographics.com^
-@@||emjcd.com^
 @@||ad.azure.com^
 @@||ad.ext.azure.com^
-@@||ads.taboola.com^
 @@||autocomplete.clearbit.com^
 @@||chart-embed.service.newrelic.com^
 @@||tracker.eu.org^
@@ -390,7 +356,6 @@
 @@||v.miguvideo.com^
 @@||vd.l.qq.com^
 @@||cre.dp.sina.cn^
-@@||smartredirect.de^
 @@||ic.snssdk.com^
 @@||phs.tanx.com^
 @@||g.tbcdn.cn^
@@ -416,8 +381,6 @@
 @@||blubroid.de^
 @@||ob.cheqzone.com^
 @@||googleadapis.l.google.com^
-@@||redirect.appmetrica.yandex.net^
-@@||optout.rlcdn.com^
 @@||smartpixel.tv^
 @@||vodafonelimited.tt.omtrdc.net^
 @@||equifaxps.122.2o7.net^
@@ -445,7 +408,6 @@
 @@||minigame.qq.com^
 @@||msn.wrating.com^
 @@||speedtest.net^
-@@||swjoy.com^
 @@||tuhu.cn^
 @@||xmxing.net^
 @@||zbj.com^
@@ -574,7 +536,6 @@
 @@||s-cs.rmp.rakuten.com^
 @@||cdn.production.townsquareblogs.com^
 @@||dl.zuimeitianqi.com^
-@@||sjwoe.com^
 @@||m.jd.com^
 @@||pic-tv6s.4p68.com^
 @@||tv.bili96.co^
@@ -595,8 +556,6 @@
 @@||cj.conversant.mgr.consensu.org^
 @@||mbyfzn.com^
 @@||p.zjptg.com^
-@@||kdukvh.com^
-@@||pkracv.com^
 @@||tags.creativecdn.com^
 @@||async.resetdigital.co^
 @@||id.navegg.com^
@@ -810,4 +769,3 @@
 @@||cse.google.vg^
 @@||cse.google.vu^
 @@||cse.google.ws^
-@@||coral.coralproject.net^

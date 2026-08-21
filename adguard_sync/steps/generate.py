@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from ..config import resolve_repo_name
+from .filter import RuleClassifier
 
 ADGUARD_HEADER = """!
 ! Title: AdGuard Home 规则聚合订阅
@@ -76,14 +77,45 @@ def generate_blacklist(records: list[dict[str, Any]], homepage: str) -> str:
     return "\n".join(lines) + "\n"
 
 
-def generate_whitelist(records: list[dict[str, Any]], homepage: str) -> str:
-    """白名单：AdGuard 例外语法 @@||domain^；keep_raw 规则原样保留。"""
+def _match_exclude(domain: str, exclude: set[str]) -> bool:
+    """判断域名是否命中排除列表（域名本身或其任一父域在列表中）。"""
+    if domain in exclude:
+        return True
+    parts = domain.split(".")
+    for i in range(1, len(parts)):
+        if ".".join(parts[i:]) in exclude:
+            return True
+    return False
+
+
+def generate_whitelist(
+    records: list[dict[str, Any]],
+    homepage: str,
+    exclude_domains: set[str] | None = None,
+) -> str:
+    """白名单：AdGuard 例外语法 @@||domain^；keep_raw 规则原样保留。
+
+    exclude_domains：广告网络/追踪联盟域名集合，白名单命中这些域名（含子域）
+    时剔除，避免在 DNS 层放行广告域名。
+    """
+    exclude = exclude_domains or set()
     lines = [_header("whitelist", "白名单（放行）", homepage)]
     for r in records:
+        domain = r.get("domain", "")
         if r.get("keep_raw", False):
+            # 通配符/带修饰符白名单规则：提取域名后同样做排除判断
+            if not domain:
+                domain = RuleClassifier._extract_host(r["raw"])
+            if domain and _match_exclude(domain, exclude):
+                continue
             lines.append(r["raw"])
-        else:
-            lines.append("@@||" + r["domain"] + "^")
+            continue
+        if not domain:
+            continue
+        # 命中广告网络/追踪联盟（域名本身或其父域）→ 剔除，避免放行广告
+        if _match_exclude(domain, exclude):
+            continue
+        lines.append("@@||" + domain + "^")
     return "\n".join(lines) + "\n"
 
 
@@ -123,7 +155,11 @@ def generate_outputs(
             print(f"[generate] 跳过未知格式: {fmt}")
             continue
         records = by_format.get(fmt, [])
-        outputs[name] = gen(records, homepage)
+        if fmt == "whitelist":
+            exclude = set(settings.get("whitelist_exclude_domains", []))
+            outputs[name] = gen(records, homepage, exclude_domains=exclude)
+        else:
+            outputs[name] = gen(records, homepage)
 
     output_dir.mkdir(parents=True, exist_ok=True)
     for name, content in outputs.items():

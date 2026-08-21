@@ -32,6 +32,39 @@ cdn:
   - name: "cdn.jsdelivr.net"
     url_template: "https://cdn.jsdelivr.net/gh/{owner}/{repo}@{branch}/{path}"
 
+# 白名单中需要剔除的广告网络/追踪联盟域名。
+# 这些域名若被白名单放行，DNS 层将直接放行广告域名的解析，导致广告无法拦截。
+# 规则：白名单中命中以下域名（含其子域）的规则一律剔除。
+whitelist_exclude_domains:
+  - "adsterra.com"
+  - "taboola.com"
+  - "doubleclick.net"
+  - "commission-junction.com"
+  - "awin.com"
+  - "awin1.com"
+  - "crwdcntrl.net"
+  - "id5-sync.com"
+  - "liadm.com"
+  - "pgpartner.com"
+  - "rlcdn.com"
+  - "mczbf.com"
+  - "ezodn.com"
+  - "afi-b.com"
+  - "logentries.com"
+  - "statcounter.com"
+  - "appmetrica.yandex.com"
+  - "appmetrica.yandex.net"
+  - "flurry.com"
+  - "videoplayerhub.com"
+  - "emjcd.com"
+  - "smartredirect.de"
+  - "swjoy.com"
+  - "sjwoe.com"
+  - "kdukvh.com"
+  - "pkracv.com"
+  - "ay.delivery"
+  - "coral.coralproject.net"
+
 # README 生成配置
 readme:
   template: "README.template.md"
