@@ -14,7 +14,9 @@ def dedupe_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """按域名去重；正则等无域名规则按原始行去重。
 
     规则：
-    - 白名单优先级高于黑名单 —— 若同一域名同时出现在黑白名单，保留白名单。
+    - DNS 层广告拦截优先 —— 若同一域名同时出现在黑白名单，保留黑名单。
+      （浏览器例外白名单会放行广告域名解析；DNS 过滤以拦截为准，
+        确需放行的正常服务域名由白名单产物单独输出，不覆盖黑名单。）
     - 无域名的规则（正则/部分通配符）按 raw 精确去重，不丢弃。
     - 其余情况保留首个出现的记录。
     """
@@ -29,7 +31,7 @@ def dedupe_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
             continue
         if domain in seen_domain:
             existing = seen_domain[domain]
-            if rec["action"] == "whitelist" and existing["action"] != "whitelist":
+            if rec["action"] == "blacklist" and existing["action"] != "blacklist":
                 seen_domain[domain] = rec
             continue
         seen_domain[domain] = rec

@@ -64,6 +64,14 @@ whitelist_exclude_domains:
   - "pkracv.com"
   - "ay.delivery"
   - "coral.coralproject.net"
+  # 穿山甲（Pangle）广告 SDK 专用域名——只服务广告，拦截不影响字节系 App 正常功能
+  - "pangolin-sdk-toutiao.com"
+  - "pangolin-sdk-toutiao-b.com"
+  - "ib.snssdk.com"
+  - "ic.snssdk.com"
+  - "is.snssdk.com"
+  - "oceanengine.com"
+  - "bytedanceapi.com"
 
 # README 生成配置
 readme:

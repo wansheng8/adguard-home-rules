@@ -21,14 +21,26 @@ def test_dedupe_exact():
     assert len(out) == 1
 
 
-def test_whitelist_wins_over_blacklist():
+def test_blacklist_wins_over_whitelist():
+    """DNS 层广告拦截优先：同一域名黑白名单冲突时保留黑名单。"""
     recs = [
         _rec("x.example.com", "blacklist"),
         _rec("x.example.com", "whitelist"),
     ]
     out = dedupe_records(recs)
     assert len(out) == 1
-    assert out[0]["action"] == "whitelist"
+    assert out[0]["action"] == "blacklist"
+
+
+def test_blacklist_wins_whitelist_first():
+    """即使白名单先出现，黑名单仍优先。"""
+    recs = [
+        _rec("x.example.com", "whitelist"),
+        _rec("x.example.com", "blacklist"),
+    ]
+    out = dedupe_records(recs)
+    assert len(out) == 1
+    assert out[0]["action"] == "blacklist"
 
 
 def test_blacklist_kept_when_no_conflict():
