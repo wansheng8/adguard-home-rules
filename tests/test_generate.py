@@ -33,15 +33,19 @@ def test_match_exclude_subdomain():
 
 
 def test_whitelist_excludes_ad_network():
-    """白名单剔除广告网络域名。"""
+    """白名单剔除广告网络域名（必要服务清单过滤）。"""
     records = [
         _record("adsterra.com"),
         _record("cdn.taboola.com"),
         _record("speedtest.net"),
         _record("battle.net"),
     ]
+    black = {"adsterra.com", "taboola.com", "speedtest.net", "battle.net"}
+    necessary = {"speedtest.net", "battle.net"}
     out = generate_whitelist(records, "https://github.com/x/y",
-                             exclude_domains={"adsterra.com", "taboola.com"})
+                             exclude_domains={"adsterra.com", "taboola.com"},
+                             black_domains=black,
+                             necessary_domains=necessary)
     assert "@@||adsterra.com^" not in out
     assert "@@||cdn.taboola.com^" not in out
     assert "@@||speedtest.net^" in out
@@ -51,10 +55,40 @@ def test_whitelist_excludes_ad_network():
 def test_whitelist_keeps_necessary():
     """必要服务白名单保留。"""
     records = [_record("speedtest.net"), _record("m.jd.com"), _record("360.cn")]
+    black = {"speedtest.net", "m.jd.com", "360.cn"}
+    necessary = {"speedtest.net", "jd.com", "360.cn"}
     out = generate_whitelist(records, "https://github.com/x/y",
-                             exclude_domains={"adsterra.com"})
+                             exclude_domains={"adsterra.com"},
+                             black_domains=black,
+                             necessary_domains=necessary)
     assert "@@||speedtest.net^" in out
     assert "@@||m.jd.com^" in out
+    assert "@@||360.cn^" in out
+
+
+def test_whitelist_drops_browser_exceptions():
+    """非必要服务的浏览器例外规则被剔除（防止放行广告）。"""
+    records = [_record("adsterra.com"), _record("speedtest.net")]
+    black = {"adsterra.com", "speedtest.net"}
+    necessary = {"speedtest.net"}
+    out = generate_whitelist(records, "https://github.com/x/y",
+                             exclude_domains={"adsterra.com"},
+                             black_domains=black,
+                             necessary_domains=necessary)
+    assert "@@||adsterra.com^" not in out
+    assert "@@||speedtest.net^" in out
+
+
+def test_whitelist_ad_intersecting_black_dropped():
+    """广告域名即使与黑名单有交集，但不在必要服务清单中也被剔除。"""
+    records = [_record("redir.tradedoubler.com"), _record("360.cn")]
+    black = {"tradedoubler.com", "360.cn"}
+    necessary = {"360.cn"}
+    out = generate_whitelist(records, "https://github.com/x/y",
+                             exclude_domains={"tradedoubler.com"},
+                             black_domains=black,
+                             necessary_domains=necessary)
+    assert "@@||redir.tradedoubler.com^" not in out
     assert "@@||360.cn^" in out
 
 
@@ -62,7 +96,9 @@ def test_whitelist_keep_raw_excluded():
     """keep_raw 通配符白名单规则同样被剔除。"""
     records = [_record("ay.delivery", raw="@@||*.ay.delivery", keep_raw=True)]
     out = generate_whitelist(records, "https://github.com/x/y",
-                             exclude_domains={"ay.delivery"})
+                             exclude_domains={"ay.delivery"},
+                             black_domains={"ay.delivery"},
+                             necessary_domains={"example.com"})
     assert "@@||*.ay.delivery" not in out
 
 
@@ -70,5 +106,7 @@ def test_whitelist_keep_raw_kept():
     """keep_raw 非广告白名单规则保留。"""
     records = [_record("speedtest.net", raw="@@||*.speedtest.net^", keep_raw=True)]
     out = generate_whitelist(records, "https://github.com/x/y",
-                             exclude_domains={"adsterra.com"})
+                             exclude_domains={"adsterra.com"},
+                             black_domains={"speedtest.net"},
+                             necessary_domains={"speedtest.net"})
     assert "@@||*.speedtest.net^" in out

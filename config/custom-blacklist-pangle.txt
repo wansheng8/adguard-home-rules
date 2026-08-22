@@ -1,0 +1,17 @@
+! 穿山甲（Pangle）广告 SDK 专用域名
+! 字节系 App（抖音/头条/西瓜视频等）广告投放的核心广告专用域名。
+! 与功能共用根域的（snssdk.com / bytedanceapi.com / oceanengine.com）只拦截广告专用子域，
+! 避免整域拦截导致 App 正常功能（登录、视频加载等）异常。
+!
+! 广告创意/素材内容域名
+||creative.snssdk.com^
+||sf6-ttcdn-tos.pstatp.com^
+! 广告配置下发（vod-settings 为穿山甲视频广告设置接口）
+||vod-settings.bytedanceapi.com^
+! 广告日志上报
+||islog.snssdk.com^
+! 头条广告投放
+||e.toutiao.com^
+! 巨量引擎广告投放平台统计
+||mon.stats.oceanengine.com^
+||api-analytics.stats.oceanengine.com^
